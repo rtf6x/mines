@@ -1,0 +1,119 @@
+@import "normalize";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body {
+  background: #252525;
+  color: #514f54;
+  text-align: center;
+  padding: 20px 0;
+}
+
+table, tr, td {
+  border-collapse: collapse;
+  padding: 5px 10px;
+  margin: 0 auto;
+}
+
+.field {
+  padding: 20px 0;
+}
+
+.cell {
+  background: transparent url("../images/minesweeper.png") no-repeat scroll 0 -79px;
+  float: left;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  width: 32px;
+  z-index: 1;
+}
+
+.cell-open {
+  background-position: -1px -46px;
+}
+
+.cell-dig1 {
+  background-position: -33px -46px;
+}
+
+.cell-dig2 {
+  background-position: -65px -46px;
+}
+
+.cell-dig3 {
+  background-position: -97px -46px;
+}
+
+.cell-dig4 {
+  background-position: -129px -46px;
+}
+
+.cell-dig5 {
+  background-position: -161px -46px;
+}
+
+.cell-dig6 {
+  background-position: -193px -46px;
+}
+
+.cell-dig7 {
+  background-position: -225px -46px;
+}
+
+.cell-dig8 {
+  background-position: -257px -46px;
+}
+
+.cell-flag {
+  background-position: -32px -79px;
+}
+
+.cell-flag-fail {
+  background-position: -97px -79px;
+}
+
+.cell-digX {
+  background-position: -128px -79px;
+
+  &.cell-digX-hit {
+    background-position: -65px -79px;
+  }
+}
+
+.controls {
+  button {
+    border-style: solid;
+    border-width: 0 0 3px;
+    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+    color: #FFFFFF;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-block;
+    font-style: normal;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    transition: all 200ms ease-in-out 0s;
+    white-space: nowrap;
+    font-family: "Gotham Rounded A", "Gotham Rounded B", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    padding: 5px 10px 5px;
+    font-size: 18px;
+    border-color: #288541;
+    background-color: #50aa69;
+
+    &:hover, &:focus, &:active {
+      background-color: #4BC970;
+      border-color: #3AC162;
+    }
+  }
+}
+
+.settings_form {
+}
