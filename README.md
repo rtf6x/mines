@@ -1,0 +1,2 @@
+# mines
+React Mines game
