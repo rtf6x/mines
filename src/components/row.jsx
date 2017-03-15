@@ -7,7 +7,7 @@ class Row extends Component {
     const { row, cols } = this.props;
     return (
       <tr>
-        {cols.map((item, index) =><Cell cell={item} key={row + '-' + index}/>)}
+        {cols.map((item, index) =><Cell rowKey={row} cellKey={index} key={row + '-' + index}/>)}
       </tr>
     )
   }

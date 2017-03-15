@@ -6,7 +6,7 @@ import {
   GENERATE_FIELD,
   FLAG_CELL,
   OPEN_CELL,
-  CHECK_MINES_AROUND,
+  OPEN_CELLS_AROUND,
 } from '../constants';
 
 export const tickGame = () => {
@@ -65,9 +65,9 @@ export const endGame = (row, cell) => {
   }
 };
 
-export const checkMinesAround = (row, cell) => {
+export const openCellsAround = (row, cell) => {
   return {
-    type: CHECK_MINES_AROUND,
+    type: OPEN_CELLS_AROUND,
     row,
     cell
   }

@@ -6,68 +6,87 @@ import {
   FLAG_CELL,
   START_GAME,
   GENERATE_FIELD,
-  CHECK_MINES_AROUND,
+  OPEN_CELLS_AROUND,
 } from '../constants';
 
 import {
-  unreveal,
-  changeCell,
+  field,
+  checkFailedFlags,
+  reRenderCell,
   generateField,
   generateMines,
   revealBombs,
-  checkMinesAround,
-  checkClosedCellsLeft,
+  cellsToOpenLeft,
+  installFlag,
+  openCell,
+  openCellsAround,
 } from './helpers';
 
 const game = (state = {
-  field: [],
+  field: field,
   started: false,
   timer: 0
 }, action) => {
   switch (action.type) {
 
     case START_GAME:
+      generateMines(action.mines, action.row, action.cell);
       return {
         ...state,
-        field: generateMines(state.field, action.mines, action.row, action.cell),
+        field: field,
         started: true,
-        timer: !state.timer ? 0 : state.timer,
         timerInstance: !state.timerInstance ? action.timerInstance : state.timerInstance
       };
 
     case GENERATE_FIELD:
       clearInterval(state.timerInstance);
+      generateField(action.rows, action.cols);
       return {
-        field: generateField(action.rows, action.cols),
+        field: field,
         started: false,
         timer: 0,
         minesLeft: action.mines
       };
 
     case FLAG_CELL:
+      installFlag(action.row, action.cell, action.mark );
       return {
         ...state,
-        field: changeCell(state.field, action.row, action.cell, { marked: action.mark }),
+        field: field,
         minesLeft: action.mark ? state.minesLeft - 1 : state.minesLeft + 1
       };
 
     case OPEN_CELL:
-      if (!state.field[action.row][action.cell].label) {
-        state.field = unreveal(state.field, action.row, action.cell);
+      openCell(action.row, action.cell);
+      state.field = field;
+      if (!cellsToOpenLeft){
+        clearInterval(state.timerInstance);
+        state.started = false;
+        state.finished = true;
       }
-      state.field = changeCell(state.field, action.row, action.cell, { opened: true });
-      checkClosedCellsLeft(state);
       return state;
 
-    case CHECK_MINES_AROUND:
-      return checkMinesAround(state, action.row, action.cell);
+    case OPEN_CELLS_AROUND:
+      openCellsAround(action.row, action.cell);
+      if (checkFailedFlags()) {
+        revealBombs();
+        clearInterval(state.timerInstance);
+        return {
+          ...state,
+          field: field,
+          started: false,
+          blowedUp: true
+        };
+      }
+      return state;
 
     case BLOW_UP:
       clearInterval(state.timerInstance);
-      state.field = changeCell(state.field, action.row, action.cell, { opened: true, hit: true });
+      reRenderCell(action.row, action.cell, { opened: true, hit: true });
+      revealBombs();
       return {
         ...state,
-        field: revealBombs(state.field),
+        field: field,
         started: false,
         blowedUp: true
       };
