@@ -35,7 +35,7 @@ export const unreveal = (row, cell) => {
 };
 
 export const installFlag = (row, cell, mark) => {
-  reRenderCell(row, cell, { marked: mark });
+  if (!field[row][cell].opened) reRenderCell(row, cell, { marked: mark });
 };
 
 export const revealBombs = () => {
