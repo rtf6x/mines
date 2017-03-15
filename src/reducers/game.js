@@ -12,6 +12,7 @@ import {
 
 import {
   field,
+  minesLeft,
   checkFailedFlags,
   reRenderCell,
   generateField,
@@ -32,12 +33,12 @@ const game = (state = {
 
     case CHANGE_SETTINGS:
       clearInterval(state.timerInstance);
-      generateField(action.settings.rows, action.settings.cols);
+      generateField(action.settings.rows, action.settings.cols, action.settings.mines);
       return {
         field,
         started: false,
         timer: 0,
-        minesLeft: action.settings.mines
+        minesLeft
       };
 
     case START_GAME:
@@ -51,12 +52,12 @@ const game = (state = {
 
     case GENERATE_FIELD:
       clearInterval(state.timerInstance);
-      generateField(action.rows, action.cols);
+      generateField(action.rows, action.cols, action.mines);
       return {
         field,
         started: false,
         timer: 0,
-        minesLeft: action.mines
+        minesLeft
       };
 
     case FLAG_CELL:
@@ -64,7 +65,7 @@ const game = (state = {
       return {
         ...state,
         field,
-        minesLeft: action.mark ? state.minesLeft - 1 : state.minesLeft + 1
+        minesLeft
       };
 
     case OPEN_CELL:

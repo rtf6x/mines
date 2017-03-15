@@ -1,6 +1,7 @@
 export var field = [];
 export var bombs = [];
 export var cellsToOpenLeft = 0;
+export var minesLeft = 0;
 
 export const reRenderCell = (row, cell, newProps) => {
   field[row][cell] = Object.assign({}, field[row][cell], newProps);
@@ -35,7 +36,10 @@ export const unreveal = (row, cell) => {
 };
 
 export const installFlag = (row, cell, mark) => {
-  if (!field[row][cell].opened) reRenderCell(row, cell, { marked: mark });
+  if (!field[row][cell].opened){
+    reRenderCell(row, cell, { marked: mark });
+    minesLeft = mark ? minesLeft - 1 : minesLeft + 1;
+  }
 };
 
 export const revealBombs = () => {
@@ -133,6 +137,7 @@ export const plusOne = (row, cell) => {
 export const generateField = (rows, cols) => {
   field = [];
   bombs = [];
+  minesLeft = mines;
   cellsToOpenLeft = rows * cols;
   for (let row = 0; row < rows; row++) {
     field[row] = [];
