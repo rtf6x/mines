@@ -61,13 +61,11 @@ export const openCellsAround = (row, cell) => {
 
 export const checkFailedFlags = () => {
   let count = 0;
-  field.map(function (row) {
-    row.map(function (cell) {
-      if (cell.hasMine && !cell.marked && cell.opened) {
-        reRenderCell(cell.row, cell.cell, { hit: true });
-        count++;
-      }
-    });
+  bombs.map((bomb) => {
+    if (!field[bomb.row][bomb.cell].marked && field[bomb.row][bomb.cell].opened) {
+      reRenderCell(field[bomb.row][bomb.cell].row, field[bomb.row][bomb.cell].cell, { hit: true });
+      count++;
+    }
   });
   return count;
 };

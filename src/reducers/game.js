@@ -33,7 +33,7 @@ const game = (state = {
       generateMines(action.mines, action.row, action.cell);
       return {
         ...state,
-        field: field,
+        field,
         started: true,
         timerInstance: !state.timerInstance ? action.timerInstance : state.timerInstance
       };
@@ -42,29 +42,31 @@ const game = (state = {
       clearInterval(state.timerInstance);
       generateField(action.rows, action.cols);
       return {
-        field: field,
+        field,
         started: false,
         timer: 0,
         minesLeft: action.mines
       };
 
     case FLAG_CELL:
-      installFlag(action.row, action.cell, action.mark );
+      installFlag(action.row, action.cell, action.mark);
       return {
         ...state,
-        field: field,
+        field,
         minesLeft: action.mark ? state.minesLeft - 1 : state.minesLeft + 1
       };
 
     case OPEN_CELL:
       openCell(action.row, action.cell);
-      state.field = field;
-      if (!cellsToOpenLeft){
+      if (!cellsToOpenLeft) {
         clearInterval(state.timerInstance);
-        state.started = false;
-        state.finished = true;
       }
-      return state;
+      return {
+        ...state,
+        field,
+        started: !!cellsToOpenLeft,
+        finished: !cellsToOpenLeft
+      };
 
     case OPEN_CELLS_AROUND:
       openCellsAround(action.row, action.cell);
@@ -73,12 +75,20 @@ const game = (state = {
         clearInterval(state.timerInstance);
         return {
           ...state,
-          field: field,
+          field,
           started: false,
           blowedUp: true
         };
       }
-      return state;
+      if (!cellsToOpenLeft) {
+        clearInterval(state.timerInstance);
+      }
+      return {
+        ...state,
+        field,
+        started: !!cellsToOpenLeft,
+        finished: !cellsToOpenLeft
+      };
 
     case BLOW_UP:
       clearInterval(state.timerInstance);
@@ -86,7 +96,7 @@ const game = (state = {
       revealBombs();
       return {
         ...state,
-        field: field,
+        field,
         started: false,
         blowedUp: true
       };

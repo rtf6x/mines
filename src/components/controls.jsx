@@ -31,7 +31,7 @@ class Controls extends Component {
         <button
           className="generate"
           onClick={(e) => dispatch(generateField(settings.rows, settings.cols, settings.mines))}>
-          New
+          New (F2)
         </button>
         <div className="timer">{time}</div>
         <div className="mines_count">Осталось мин: <span>{game.minesLeft}</span></div>
