@@ -1,6 +1,7 @@
 import {
   START_GAME,
-  STOP_GAME,
+  CHANGE_SETTINGS,
+  OPEN_SETTINGS,
   BLOW_UP,
   TICK_GAME,
   GENERATE_FIELD,
@@ -15,6 +16,20 @@ export const tickGame = () => {
   }
 };
 
+export const changeSettings = (settings) => {
+  return {
+    type: CHANGE_SETTINGS,
+    settings
+  }
+};
+
+export const openSettings = () => {
+  return {
+    type: OPEN_SETTINGS,
+    opened: true
+  }
+};
+
 export const startGame = (timerInstance, mines, row, cell) => {
   return {
     type: START_GAME,
@@ -22,12 +37,6 @@ export const startGame = (timerInstance, mines, row, cell) => {
     mines,
     row,
     cell
-  }
-};
-
-export const stopGame = () => {
-  return {
-    type: STOP_GAME
   }
 };
 

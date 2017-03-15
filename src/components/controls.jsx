@@ -26,6 +26,11 @@ class Controls extends Component {
     minutes = minutes < 10 ? '0' + minutes : minutes;
     seconds = seconds < 10 ? '0' + seconds : seconds;
     let time = minutes + ':' + seconds;
+
+    let timerClass = 'timer';
+    if (game.finished) timerClass += ' green';
+    if (game.blowedUp) timerClass += ' red';
+
     return (
       <div className="controls">
         <button
@@ -33,8 +38,8 @@ class Controls extends Component {
           onClick={(e) => dispatch(generateField(settings.rows, settings.cols, settings.mines))}>
           New (F2)
         </button>
-        <div className="timer">{time}</div>
-        <div className="mines_count">Осталось мин: <span>{game.minesLeft}</span></div>
+        <div className={timerClass}>{time}</div>
+        <div className="mines_count">Mines left: <span>{game.minesLeft}</span></div>
       </div>
     )
   }

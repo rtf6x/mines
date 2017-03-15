@@ -4,6 +4,7 @@ import {
   TICK_GAME,
   OPEN_CELL,
   FLAG_CELL,
+  CHANGE_SETTINGS,
   START_GAME,
   GENERATE_FIELD,
   OPEN_CELLS_AROUND,
@@ -28,6 +29,16 @@ const game = (state = {
   timer: 0
 }, action) => {
   switch (action.type) {
+
+    case CHANGE_SETTINGS:
+      clearInterval(state.timerInstance);
+      generateField(action.settings.rows, action.settings.cols);
+      return {
+        field,
+        started: false,
+        timer: 0,
+        minesLeft: action.settings.mines
+      };
 
     case START_GAME:
       generateMines(action.mines, action.row, action.cell);

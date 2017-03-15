@@ -86,6 +86,19 @@ table, tr, td {
 }
 
 .controls {
+  .mines_count {
+    font-size: 12px;
+  }
+  .timer {
+    font-size: 18px;
+    margin: 10px 0;
+    &.green {
+      color: green;
+    }
+    &.red {
+      color: red;
+    }
+  }
   button {
     border-style: solid;
     border-width: 0 0 3px;
@@ -104,7 +117,7 @@ table, tr, td {
     font-family: "Gotham Rounded A", "Gotham Rounded B", Helvetica, Arial, sans-serif;
     font-weight: 700;
     padding: 5px 10px 5px;
-    font-size: 18px;
+    font-size: 12px;
     border-color: #288541;
     background-color: #50aa69;
 
@@ -116,4 +129,59 @@ table, tr, td {
 }
 
 .settings_form {
+  font-size: 12px;
+  font-family: "Gotham Rounded A", "Gotham Rounded B", Helvetica, Arial, sans-serif;
+  width: 145px;
+  margin: 0 auto;
+
+  div {
+    clear: both;
+  }
+
+  label {
+    float: left;
+    height: 20px;
+    line-height: 30px;
+  }
+
+  input {
+    float: right;
+    margin: 0 10px 10px;
+    border-radius: 6px;
+    height: 20px;
+    background: transparent;
+    border: 1px solid;
+    color: #4B70C9;
+    width: 45px;
+    text-align: center;
+  }
+
+  button {
+    margin: 20px 0 0;
+    border-style: solid;
+    border-width: 0 0 3px;
+    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+    color: #FFFFFF;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-block;
+    font-style: normal;
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    transition: all 200ms ease-in-out 0s;
+    white-space: nowrap;
+    font-family: "Gotham Rounded A", "Gotham Rounded B", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    padding: 5px 10px 5px;
+    font-size: 12px;
+    border-color: #284185;
+    background-color: #5069aa;
+
+    &:hover, &:focus, &:active {
+      background-color: #4B70C9;
+      border-color: #3A62C1;
+    }
+  }
 }

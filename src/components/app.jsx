@@ -9,7 +9,7 @@ class App extends Component {
       <div className="wrapper">
         <Controls/>
         <Field/>
-        {/*<Options/>*/}
+        <Options/>
       </div>
     );
   }
