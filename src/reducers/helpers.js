@@ -134,7 +134,7 @@ export const plusOne = (row, cell) => {
   }
 };
 
-export const generateField = (rows, cols) => {
+export const generateField = (rows, cols, mines) => {
   field = [];
   bombs = [];
   minesLeft = mines;
