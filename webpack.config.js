@@ -7,7 +7,7 @@ const autoprefixer = require('autoprefixer');
 module.exports = {
   entry: './src/app.jsx',
   output: {
-    path: 'build',
+    path: __dirname + '/build',
     filename: 'app.js'
   },
   module: {
