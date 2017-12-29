@@ -6,9 +6,9 @@ class Row extends Component {
   render() {
     const { row, cols } = this.props;
     return (
-      <tr>
+      <div className="row">
         {cols.map((item, index) =><Cell rowKey={row} cellKey={index} key={row + '-' + index}/>)}
-      </tr>
+      </div>
     )
   }
 }

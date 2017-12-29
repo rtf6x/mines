@@ -7,11 +7,11 @@ class Field extends Component {
     const { field } = this.props;
     return (
       <div className="field">
-        <table>
-          <tbody>
+        <div className="table">
+          <div className="tbody">
           {field.map((item, index) =><Row row={index} key={index}/>)}
-          </tbody>
-        </table>
+          </div>
+        </div>
       </div>
     )
   }

@@ -4,7 +4,7 @@ import { generateField } from '../actions';
 
 class Controls extends Component {
   _handleKeyDown(e) {
-    if (e.key == 'F2') {
+    if (e.key === 'F2') {
       this.props.dispatch(generateField(this.props.settings.rows, this.props.settings.cols, this.props.settings.mines));
       return false;
     }

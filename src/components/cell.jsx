@@ -12,17 +12,30 @@ import {
 class Cell extends Component {
   render() {
     const { openCell, flagCell, endGame, startGame, cell, blowedUp, gameStarted, tickGame, mines, openCellsAround, finished } = this.props;
-    let open = (e) => openCell(cell.row, cell.cell);
-    let context = (e) => flagCell(cell.row, cell.cell, !cell.marked);
+    let open = (e) => {
+      switch (e.button){
+        case 0:
+          if (cell.marked || blowedUp || finished) {
+            return;
+          } else if (!gameStarted) {
+            return startGame(setInterval(() => tickGame(), 1000), mines, cell.row, cell.cell);
+          } else if (cell.hasMine) {
+            return endGame(cell.row, cell.cell);
+          } else if (cell.opened && !cell.hasMine){
+            return openCellsAround(cell.row, cell.cell);
+          } else return openCell(cell.row, cell.cell);
+          break;
+        case 2:
+          if (blowedUp || finished) {
+            return;
+          } else return flagCell(cell.row, cell.cell, !cell.marked);
+          break;
+      }
+    };
     let className = 'cell';
-
-    if (cell.hasMine) {
-      open = (e) => endGame(cell.row, cell.cell);
-    }
 
     if (cell.marked) {
       className += ' cell-flag';
-      open = null;
       if (!cell.hasMine && blowedUp) {
         className += ' cell-flag-fail';
       }
@@ -36,27 +49,11 @@ class Cell extends Component {
         if (cell.hit) {
           className += ' cell-digX-hit';
         }
-      } else {
-        open = (e) => {
-          openCellsAround(cell.row, cell.cell);
-        };
       }
     }
 
-    if (!gameStarted) {
-      open = (e) => {
-        startGame(setInterval(() => tickGame(), 1000), mines, cell.row, cell.cell);
-      };
-    }
-
-    if (blowedUp || finished) {
-      open = null;
-      context = null;
-    }
-
     return (
-      <td onClick={open} onContextMenu={context} className={className}>
-      </td>
+      <div onMouseUp={open} className={className} />
     )
   }
 }

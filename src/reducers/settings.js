@@ -2,9 +2,9 @@ import { CHANGE_SETTINGS, OPEN_SETTINGS, CLOSE_SETTINGS } from '../constants';
 
 const settings = (state = {
   opened: false,
-  rows: 10,
-  cols: 10,
-  mines: 10
+  rows: 15,
+  cols: 15,
+  mines: 40
 }, action) => {
   switch (action.type) {
     case CHANGE_SETTINGS:
