@@ -4,7 +4,8 @@
   "description": "Simple mines game",
   "main": "src/app.jsx",
   "scripts": {
-    "start": "webpack --watch"
+    "start": "webpack --watch",
+    "build": "webpack"
   },
   "author": "Alex Trapholov",
   "license": "MIT",
