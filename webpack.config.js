@@ -1,8 +1,5 @@
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-// const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: './src/app.jsx',
@@ -11,62 +8,29 @@ module.exports = {
     filename: 'app.js'
   },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.jsx?$/,
-        exclude: /(node_modules)/,
-        loader: 'babel-loader'
-      },
-      {
-        test: /\.js?$/,
+        test: /\.js(x)?$/,
         exclude: /(node_modules)/,
         loader: 'babel-loader'
       },
       {
         test: /\.(scss)$/,
-        use: [{
-          loader: 'style-loader'
-        },
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2,
-              sourceMap: false
-            }
-          },
-          {
-            loader: 'postcss-loader'
-          },
-          {
-            loader: 'resolve-url-loader'
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              outputStyle: 'expanded',
-              sourceMap: true,
-              sourceMapContents: true
-            }
-          }
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          'resolve-url-loader',
+          'sass-loader'
         ]
       },
       {
         test: /\.(css)$/,
-        use: [{
-          loader: 'style-loader'
-        },
-          {
-            loader: 'resolve-url-loader'
-          }, {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2,
-              sourceMap: true
-            }
-          },
-          {
-            loader: 'postcss-loader'
-          }
+        use: [
+          'style-loader',
+          'resolve-url-loader',
+          'css-loader',
+          'postcss-loader'
         ]
       },
       {
@@ -93,9 +57,6 @@ module.exports = {
         output: {
           path: 'build'
         },
-        postcss: [
-          autoprefixer({ browsers: 'last 2 version' })
-        ],
         context: ''
       }
     })

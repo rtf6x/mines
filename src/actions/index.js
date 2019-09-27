@@ -1,33 +1,33 @@
 import {
-  START_GAME,
-  CHANGE_SETTINGS,
-  OPEN_SETTINGS,
   BLOW_UP,
-  TICK_GAME,
-  GENERATE_FIELD,
+  CHANGE_SETTINGS,
   FLAG_CELL,
+  GENERATE_FIELD,
   OPEN_CELL,
   OPEN_CELLS_AROUND,
+  OPEN_SETTINGS,
+  START_GAME,
+  TICK_GAME,
 } from '../constants';
 
 export const tickGame = () => {
   return {
     type: TICK_GAME
-  }
+  };
 };
 
 export const changeSettings = (settings) => {
   return {
     type: CHANGE_SETTINGS,
     settings
-  }
+  };
 };
 
 export const openSettings = () => {
   return {
     type: OPEN_SETTINGS,
     opened: true
-  }
+  };
 };
 
 export const startGame = (timerInstance, mines, row, cell) => {
@@ -37,7 +37,7 @@ export const startGame = (timerInstance, mines, row, cell) => {
     mines,
     row,
     cell
-  }
+  };
 };
 
 export const generateField = (rows, cols, mines) => {
@@ -46,7 +46,7 @@ export const generateField = (rows, cols, mines) => {
     rows,
     cols,
     mines,
-  }
+  };
 };
 
 export const flagCell = (row, cell, mark) => {
@@ -55,7 +55,7 @@ export const flagCell = (row, cell, mark) => {
     row,
     cell,
     mark
-  }
+  };
 };
 
 export const openCell = (row, cell) => {
@@ -63,7 +63,7 @@ export const openCell = (row, cell) => {
     type: OPEN_CELL,
     row,
     cell
-  }
+  };
 };
 
 export const endGame = (row, cell) => {
@@ -71,7 +71,7 @@ export const endGame = (row, cell) => {
     type: BLOW_UP,
     row,
     cell
-  }
+  };
 };
 
 export const openCellsAround = (row, cell) => {
@@ -79,5 +79,5 @@ export const openCellsAround = (row, cell) => {
     type: OPEN_CELLS_AROUND,
     row,
     cell
-  }
+  };
 };

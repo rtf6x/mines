@@ -1,4 +1,4 @@
-import { CHANGE_SETTINGS, OPEN_SETTINGS, CLOSE_SETTINGS } from '../constants';
+import { CHANGE_SETTINGS, CLOSE_SETTINGS, OPEN_SETTINGS } from '../constants';
 
 const settings = (state = {
   opened: false,
@@ -23,7 +23,7 @@ const settings = (state = {
         opened: false
       };
     default:
-      return state
+      return state;
   }
 };
 

@@ -36,7 +36,7 @@ export const unreveal = (row, cell) => {
 };
 
 export const installFlag = (row, cell, mark) => {
-  if (!field[row][cell].opened){
+  if (!field[row][cell].opened) {
     reRenderCell(row, cell, { marked: mark });
     minesLeft = mark ? minesLeft - 1 : minesLeft + 1;
   }
@@ -145,7 +145,7 @@ export const generateField = (rows, cols, mines) => {
       field[row][cell] = {
         row: row,
         cell: cell
-      }
+      };
     }
   }
 };

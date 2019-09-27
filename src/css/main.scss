@@ -95,16 +95,20 @@ body {
   .mines_count {
     font-size: 12px;
   }
+
   .timer {
     font-size: 18px;
     margin: 10px 0;
+
     &.green {
       color: green;
     }
+
     &.red {
       color: red;
     }
   }
+
   button {
     border-style: solid;
     border-width: 0 0 3px;

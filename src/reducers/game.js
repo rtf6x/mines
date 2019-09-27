@@ -1,27 +1,26 @@
 import {
   BLOW_UP,
-  STOP_GAME,
-  TICK_GAME,
-  OPEN_CELL,
-  FLAG_CELL,
   CHANGE_SETTINGS,
-  START_GAME,
+  FLAG_CELL,
   GENERATE_FIELD,
+  OPEN_CELL,
   OPEN_CELLS_AROUND,
+  START_GAME,
+  TICK_GAME,
 } from '../constants';
 
 import {
-  field,
-  minesLeft,
+  cellsToOpenLeft,
   checkFailedFlags,
-  reRenderCell,
+  field,
   generateField,
   generateMines,
-  revealBombs,
-  cellsToOpenLeft,
   installFlag,
+  minesLeft,
   openCell,
   openCellsAround,
+  reRenderCell,
+  revealBombs,
 } from './helpers';
 
 const game = (state = {
