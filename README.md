@@ -2,9 +2,9 @@
 
 Simple web mines game made with ReactJS and Redux.
 
-###Start locally:
+### Start locally:
 `npm install`
 `npm start`
 
-###Build:
+### Build:
 `webpack`
