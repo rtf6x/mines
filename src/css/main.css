@@ -1,0 +1,119 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body {
+  background: #252525;
+  color: #514f54;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.field {
+  padding: 20px 0;
+}
+
+.table {
+  padding: 5px 10px;
+  margin: 0 auto;
+}
+
+.row {
+  margin: 0;
+  padding: 0;
+  height: 32px;
+}
+
+.cell {
+  background: transparent url("../images/minesweeper.png") no-repeat scroll 0 -79px;
+  display: inline-block;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  width: 32px;
+  z-index: 1;
+}
+
+.cell-open {
+  background-position: -1px -46px;
+}
+
+.cell-dig1 {
+  background-position: -33px -46px;
+}
+
+.cell-dig2 {
+  background-position: -65px -46px;
+}
+
+.cell-dig3 {
+  background-position: -97px -46px;
+}
+
+.cell-dig4 {
+  background-position: -129px -46px;
+}
+
+.cell-dig5 {
+  background-position: -161px -46px;
+}
+
+.cell-dig6 {
+  background-position: -193px -46px;
+}
+
+.cell-dig7 {
+  background-position: -225px -46px;
+}
+
+.cell-dig8 {
+  background-position: -257px -46px;
+}
+
+.cell-flag {
+  background-position: -32px -79px;
+}
+
+.cell-flag-fail {
+  background-position: -97px -79px;
+}
+
+.cell-digX {
+  background-position: -128px -79px;
+
+  &.cell-digX-hit {
+    background-position: -65px -79px;
+  }
+}
+
+.settings_form {
+  font-size: 12px;
+  font-family: "Gotham Rounded A", "Gotham Rounded B", Helvetica, Arial, sans-serif;
+  width: 145px;
+  margin: 0 auto;
+
+  & div {
+    clear: both;
+  }
+
+  & label {
+    float: left;
+    height: 20px;
+    line-height: 30px;
+  }
+
+  & input {
+    float: right;
+    margin: 0 10px 10px;
+    border-radius: 6px;
+    height: 20px;
+    background: transparent;
+    border: 1px solid;
+    color: #4B70C9;
+    width: 45px;
+    text-align: center;
+  }
+
+}

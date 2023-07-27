@@ -1,67 +1,42 @@
 {
-  "name": "react-mines",
-  "version": "0.0.1",
-  "description": "Simple mines game",
-  "main": "src/app.jsx",
-  "scripts": {
-    "start": "webpack --watch",
-    "build": "webpack"
-  },
+  "name": "mines",
+  "version": "0.1.0",
   "author": "Alex Trapholov",
-  "license": "MIT",
+  "license": "CC0",
   "dependencies": {
-    "@babel/cli": "^7.6.2",
-    "@babel/core": "^7.6.2",
-    "@babel/plugin-transform-react-constant-elements": "^7.6.0",
-    "@babel/plugin-transform-react-inline-elements": "^7.2.0",
-    "@babel/plugin-transform-runtime": "^7.6.2",
-    "@babel/polyfill": "^7.6.0",
-    "@babel/preset-env": "^7.6.2",
-    "@babel/preset-es2015": "^7.0.0-beta.53",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/preset-stage-0": "^7.0.0",
-    "@babel/register": "^7.6.2",
-    "@babel/runtime": "^7.6.2",
-    "autoprefixer": "^9.6.1",
-    "babel-loader": "^8.0.6",
-    "babel-plugin-transform-react-pure-class-to-function": "^1.0.1",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "babel-preset-react-optimize": "^1.0.1",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-redux": "^7.1.1",
-    "redux": "^4.0.4"
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.1.1",
+    "react-scripts": "5.0.1",
+    "redux": "^4.2.1",
+    "styled-components": "^6.0.5",
+    "web-vitals": "^2.1.4"
   },
-  "devDependencies": {
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-plugin-add-module-exports": "^1.0.2",
-    "babel-plugin-transform-decorators-legacy": "^1.3.5",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-react-display-name": "^6.25.0",
-    "babel-preset-react": "^6.24.1",
-    "browser-sync": "^2.26.7",
-    "browser-sync-webpack-plugin": "^2.2.2",
-    "css-loader": "^3.2.0",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "file-loader": "^4.2.0",
-    "node-sass": "^4.13.1",
-    "postcss-loader": "^3.0.0",
-    "redux-devtools": "^3.5.0",
-    "resolve-url-loader": "^3.1.0",
-    "sass-loader": "^8.0.0",
-    "style-loader": "^1.0.0",
-    "url-loader": "^2.1.0",
-    "webpack": "^4.41.0",
-    "webpack-cli": "^3.3.9"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }

@@ -7,9 +7,9 @@ class App extends Component {
   render() {
     return (
       <div className="wrapper">
-        <Controls/>
-        <Field/>
-        <Options/>
+        <Controls />
+        <Field />
+        <Options />
       </div>
     );
   }

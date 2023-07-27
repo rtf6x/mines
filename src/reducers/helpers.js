@@ -43,7 +43,7 @@ export const installFlag = (row, cell, mark) => {
 };
 
 export const revealBombs = () => {
-  bombs.map(function (bomb) {
+  bombs.forEach(function (bomb) {
     if (!field[bomb.row][bomb.cell].marked) {
       field[bomb.row][bomb.cell].opened = true;
     }
@@ -65,7 +65,7 @@ export const openCellsAround = (row, cell) => {
 
 export const checkFailedFlags = () => {
   let count = 0;
-  bombs.map((bomb) => {
+  bombs.forEach((bomb) => {
     if (!field[bomb.row][bomb.cell].marked && field[bomb.row][bomb.cell].opened) {
       reRenderCell(field[bomb.row][bomb.cell].row, field[bomb.row][bomb.cell].cell, { hit: true });
       count++;
@@ -94,7 +94,7 @@ export const generateMines = (mines, fcRow, fcCell) => {
   }
 
   // Расставляем цифры
-  bombs.map(function (bomb) {
+  bombs.forEach(function (bomb) {
     markMines(bomb.row, bomb.cell);
   });
 
@@ -104,7 +104,7 @@ export const generateMines = (mines, fcRow, fcCell) => {
 export const installRandomMine = (fcRow, fcCell) => {
   var row = Math.floor(Math.random() * field.length);
   var cell = Math.floor(Math.random() * field[row].length);
-  if (field[row][cell].hasMine || (fcRow == row && fcCell == cell)) {
+  if (field[row][cell].hasMine || (fcRow === row && fcCell === cell)) {
     installRandomMine(fcRow, fcCell);
   } else {
     field[row][cell].hasMine = true;

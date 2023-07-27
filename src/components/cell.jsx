@@ -1,4 +1,5 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   openCell as _openCell,
@@ -23,13 +24,18 @@ class Cell extends Component {
             return endGame(cell.row, cell.cell);
           } else if (cell.opened && !cell.hasMine){
             return openCellsAround(cell.row, cell.cell);
-          } else return openCell(cell.row, cell.cell);
-          break;
+          }
+          return openCell(cell.row, cell.cell);
         case 2:
           if (blowedUp || finished) {
             return;
-          } else return flagCell(cell.row, cell.cell, !cell.marked);
-          break;
+          }
+          return flagCell(cell.row, cell.cell, !cell.marked);
+        default:
+          if (blowedUp || finished) {
+            return;
+          }
+          return flagCell(cell.row, cell.cell, !cell.marked);
       }
     };
     let className = 'cell';
